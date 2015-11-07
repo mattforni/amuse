@@ -1,0 +1,57 @@
+<Project> Amuse
+<@uthor>  Matt Fornaciari
+
+Amuse is essentially a java-based MP3 player.  I opted to build the gui with swing, but I hope to eventually change it to a gtk derivative.
+This readme describes the functionality and design choice.
+
+Controls Quick Reference  |
+===========================
+ctrl + n  |   new playlist
+ctrl + q  |   quit
+
+ctrl + s  |   save to the default library path
+ctrl + l  |   load from the default library path
+
+
+Functionality |
+===============
+  - supports valid mp3 files controlled via simple control panel at the top of the gui
+    -- play
+    -- forward
+    -- backward
+  - contains a progress bar
+    -- static when no mp3 is being played
+    -- model when mp3 is playing
+  - contains a playlist panel
+    -- displays all actively not empty playlists
+    -- playlists can be added via the menu bar (or hotkey**CTRL+N)
+    -- right-click  ||  on a playlist gives you the ability to edit the name
+    -- left-click   ||  displays the clicked upon playlist
+  - contains a library panel
+    -- displays the songs contains in the current playlist
+    -- left-click   ||  fields 'id' 'plays' 'path' select the corresponding song
+    -- middle-click ||  field  'id' displays the add to playlist frame
+    -- right-click  ||  fields 'title' 'artist' gives you the ability to edit title, artist
+  - contains a very minimal add bar
+    -- simply enter the title, artist and path and click the add button
+
+
+Design  |
+=========
+  - all based on an enum-based array (enum Field) of vectors
+    -- establishes a fixed size database based on the number of fields
+
+  - the mp3 playback is all based on jl1.0.jar, mp3spi1.9.4.jar, tritonus_share.jar jars which
+    act as a layer of abstraction between the java sound api and my AmusePlayer.
+
+  - the amuse player simply acts as a basic thread - executor pool of fixed size one.
+  - it keeps track of which thread is currently playing, and when a new one is selected
+    it properly disposes of the mp3 thread, creates a new one and starts the thread.
+
+Lastly, I included a test_library.xml.  Currently the library.xml file is just a copy of this file
+but if you overwrite it, simply create another copy and remove the preceding 'test_', then run
+Amuse and load the library.
+
+
+ENJOY.
+

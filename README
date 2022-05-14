@@ -1,8 +1,7 @@
 <Project> Amuse
 <@uthor>  Matt Fornaciari
 
-Amuse is essentially a java-based MP3 player.  I opted to build the gui with swing, but I hope to eventually change it to a gtk derivative.
-This readme describes the functionality and design choice.
+Amuse is essentially a java-based MP3 player.  I opted to build the gui with swing, but I hope to eventually change it to a gtk derivative. This readme describes the functionality and design choice.
 
 Controls Quick Reference  |
 ===========================
